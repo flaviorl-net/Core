@@ -1,6 +1,6 @@
 # Core
 
-Projeto possui interfaces para implementar o pattern repository, specification, sevicebase. Possui duas versões da classe repositoy.
+Projeto possui interfaces para implementar os patterns repository, specification, service domain. Possui duas versões da classe repositoy.
 
 ## Licenses
 
