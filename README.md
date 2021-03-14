@@ -4,4 +4,4 @@ Projeto possui interfaces para implementar o pattern repository, specification, 
 
 ##Licenses
 
-MIT licenses.
+MIT license.
