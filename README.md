@@ -16,7 +16,7 @@ dotnet add package Core.Domain --version 2.1.1
 
 ## Usage
 
-### Entity
+#### Entity
 ```c#
 using Core.Domain;
 using System;
@@ -39,7 +39,7 @@ namespace CompanyName.ProductName.Domain.Entities
 }
 ```
 
-### Repository Interface
+#### Repository Interface
 ```c#
 using Core.Domain;
 using CompanyName.ProductName.Domain.Entities;
@@ -52,7 +52,7 @@ namespace CompanyName.ProductName.Domain.Interfaces.Repository
 }
 ```
 
-### Service Domain Interface
+#### Service Domain Interface
 ```c#
 using Core.Domain;
 using CompanyName.ProductName.Domain.Entities;
@@ -65,7 +65,7 @@ namespace CompanyName.ProductName.Domain.Interfaces.Services
 }
 ```
 
-### Repository
+#### Repository
 ```c#
 using Core.Infra;
 using CompanyName.ProductName.Domain.Entities;
@@ -74,15 +74,15 @@ using CompanyName.ProductName.Infra.Data.Context;
 
 namespace CompanyName.ProductName.Infra.Data.Repositories
 {
-    public class ClienteRepository : Repository<ClienteEntity, DBContext>, IClienteRepository
+    public class ClienteRepository : Repository<ClienteEntity, ProdDbContext>, IClienteRepository
     {
-        public ClienteRepository(DBContext db) 
+        public ClienteRepository(ProdDbContext db) 
           : base(db) { }
     }
 }
 ```
 
-### Service Domain
+#### Service Domain
 ```c#
 using Core.Domain;
 using CompanyName.ProductName.Domain.Entities;
