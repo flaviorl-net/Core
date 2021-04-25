@@ -131,7 +131,7 @@ using Funcional.ProgramaIndustria.Domain.Entities;
 
 namespace Funcional.ProgramaIndustria.Domain.Validation.Customer
 {
-    public class ValidarNome : ISpecification<CustomerEntity>
+    public class NameValidation : ISpecification<CustomerEntity>
     {
         public bool IsSatisfiedBy(CustomerEntity customerEntity)
         {
