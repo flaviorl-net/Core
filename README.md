@@ -96,7 +96,7 @@ namespace CompanyName.ProductName.Domain.Services
     {
         private readonly ICustomerRepository _customerRepository;
         public CustomerService(ICustomerRepository customerRepository)
-            : base(cadastroFormularioCampoRepository)
+            : base(customerRepository)
         {
             _customerRepository = customerRepository;
         }
