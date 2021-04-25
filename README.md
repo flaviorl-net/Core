@@ -29,7 +29,7 @@ namespace CompanyName.ProductName.Domain.Entities
         [Key]
         public int ID { get; set; }
         
-        //your client properties
+        //your customer properties
         
         public override Core.Domain.ValidationResult IsValid()
         {
