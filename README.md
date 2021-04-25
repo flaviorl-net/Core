@@ -107,10 +107,10 @@ namespace CompanyName.ProductName.Domain.Services
 #### Validation Domain
 ```c#
 using Core.Domain;
-using Funcional.ProgramaIndustria.Domain.Entities;
-using Funcional.ProgramaIndustria.Domain.Validation.Customer;
+using CompanyName.ProductName.Domain.Entities;
+using CompanyName.ProductName.Domain.Validation.Customer;
 
-namespace Funcional.ProgramaIndustria.Domain.Validation
+namespace CompanyName.ProductName.Domain.Validation
 {
     public class CustomerValidation : FiscalBase<CustomerEntity>
     {
@@ -127,9 +127,9 @@ namespace Funcional.ProgramaIndustria.Domain.Validation
 #### Name Customer Validation
 ```c#
 using Core.Domain;
-using Funcional.ProgramaIndustria.Domain.Entities;
+using CompanyName.ProductName.Domain.Entities;
 
-namespace Funcional.ProgramaIndustria.Domain.Validation.Customer
+namespace CompanyName.ProductName.Domain.Validation.Customer
 {
     public class NameValidation : ISpecification<CustomerEntity>
     {
