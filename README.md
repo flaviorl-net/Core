@@ -24,7 +24,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CompanyName.ProductName.Domain.Entities
 {
-    public class ClienteEntity : Entity
+    public class CustomerEntity : Entity
     {
         [Key]
         public int ID { get; set; }
@@ -33,7 +33,8 @@ namespace CompanyName.ProductName.Domain.Entities
         
         public override Core.Domain.ValidationResult IsValid()
         {
-            return new Core.Domain.ValidationResult();
+            var validation = new Validation.CustomerValidation();
+            return validation.Validate(this);
         }
     }
 }
@@ -46,7 +47,7 @@ using CompanyName.ProductName.Domain.Entities;
 
 namespace CompanyName.ProductName.Domain.Interfaces.Repository
 {
-    public interface IClienteRepository : IRepository<ClienteEntity>
+    public interface ICustomerRepository : IRepository<CustomerEntity>
     {
     }
 }
@@ -59,7 +60,7 @@ using CompanyName.ProductName.Domain.Entities;
 
 namespace CompanyName.ProductName.Domain.Interfaces.Services
 {
-    public interface IClienteService : IService<ClienteEntity>
+    public interface ICustomerService : IService<CustomerEntity>
     {
     }
 }
@@ -74,9 +75,9 @@ using CompanyName.ProductName.Infra.Data.Context;
 
 namespace CompanyName.ProductName.Infra.Data.Repositories
 {
-    public class ClienteRepository : Repository<ClienteEntity, ProdDbContext>, IClienteRepository
+    public class CustomerRepository : Repository<CustomerEntity, ProdDbContext>, ICustomerRepository
     {
-        public ClienteRepository(ProdDbContext db) 
+        public CustomerRepository(ProdDbContext db) 
           : base(db) { }
     }
 }
@@ -91,17 +92,56 @@ using CompanyName.ProductName.Domain.Interfaces.Services;
 
 namespace CompanyName.ProductName.Domain.Services
 {
-    public class ClienteService : Service<ClienteEntity>, IClienteService
+    public class CustomerService : Service<CustomerEntity>, ICustomerService
     {
-        private readonly IClienteRepository _clienteRepository;
-        public ClienteService(IClienteRepository clienteRepository)
+        private readonly ICustomerRepository _customerRepository;
+        public CustomerService(ICustomerRepository customerRepository)
             : base(cadastroFormularioCampoRepository)
         {
-            _clienteRepository = clienteRepository;
+            _customerRepository = customerRepository;
         }
     }
 }
 ```
+
+#### Validation Domain
+```c#
+using Core.Domain;
+using Funcional.ProgramaIndustria.Domain.Entities;
+using Funcional.ProgramaIndustria.Domain.Validation.Customer;
+
+namespace Funcional.ProgramaIndustria.Domain.Validation
+{
+    public class CustomerValidation : FiscalBase<CustomerEntity>
+    {
+        public CustomerValidation()
+        {
+            var nameValidation = new NameValidation();
+
+            base.AddRule("nameValidation", new Rule<CustomerEntity>(nameValidation, "Invalid customer name"));
+        }
+    }
+}
+```
+
+#### Name Customer Validation
+```c#
+using Core.Domain;
+using Funcional.ProgramaIndustria.Domain.Entities;
+
+namespace Funcional.ProgramaIndustria.Domain.Validation.Customer
+{
+    public class ValidarNome : ISpecification<CustomerEntity>
+    {
+        public bool IsSatisfiedBy(CustomerEntity customerEntity)
+        {
+            //your validation
+            return true;
+        }
+    }
+}
+```
+
 
 ## Licenses
 
